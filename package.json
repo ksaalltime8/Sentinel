@@ -1,0 +1,18 @@
+{
+  "name": "sentinel-discord-security",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multi-server Discord security bot with web dashboard, MongoDB storage, and Hostinger deployment support.",
+  "main": "index.js",
+  "scripts": { "start": "node index.js", "check": "node --check index.js && node --check src/bot.js && node --check src/dashboard.js && node --check src/models.js && node --check src/security.js" },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "discord.js": "^14.22.1",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "helmet": "^8.1.0",
+    "mongoose": "^8.18.0",
+    "express-rate-limit": "^8.1.0"
+  }
+}

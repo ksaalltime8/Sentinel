@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090d"><title>Sentinel — Security Console</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script>window.SENTINEL_API_BASE = "https://bot.k7devs.com";</script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar"><a class="brand" href="/"><span class="brand-mark">S</span><span>SENTINEL<span class="brand-sub">SECURITY CONSOLE</span></span></a><div class="top-right"><span id="bot-status" class="status"><i></i> Checking bot</span><button id="logout" class="button ghost hidden">Sign out</button></div></header>
+    <main>
+      <section id="welcome" class="welcome"><div class="eyebrow">DISCORD SECURITY PLATFORM</div><h1>Protection that<br><span>stays vigilant.</span></h1><p class="lead">Manage Sentinel's defenses, review security events, and monitor every server you administer from one console.</p><div class="hero-actions"><a class="button primary" href="https://bot.k7devs.com/auth/login">Continue with Discord <span>↗</span></a><span class="small-note">Discord OAuth · No bot token required</span></div><div class="feature-grid"><article><b>01 / DEFEND</b><h3>Automated detection</h3><p>Spam, invite links, mass mentions, raid signals and destructive-action alerts.</p></article><article><b>02 / CONTROL</b><h3>Per-server policy</h3><p>Each server keeps its own settings, log channel and thresholds.</p></article><article><b>03 / REVIEW</b><h3>Security history</h3><p>Review recorded events and metadata backup history in one place.</p></article></div></section>
+      <section id="console" class="hidden">
+        <div class="page-heading"><div><div class="eyebrow">COMMAND CENTER</div><h1>Security overview</h1><p class="muted" id="signed-in-as">Signed in with Discord</p></div><div class="live-pill"><i></i> LIVE CONSOLE</div></div>
+        <div class="stats"><div class="stat"><span>BOT STATUS</span><strong id="stat-bot">—</strong><small>Discord gateway</small></div><div class="stat"><span>YOUR SERVERS</span><strong id="stat-guilds">—</strong><small>Sentinel installed</small></div><div class="stat"><span>SELECTED SERVER</span><strong id="stat-members">—</strong><small>Member count</small></div></div>
+        <div class="workspace"><aside class="sidebar"><div class="section-label">YOUR SERVERS</div><div id="guild-list" class="guild-list"><div class="muted">Loading servers…</div></div><div class="side-foot">Only servers where you have Manage Server or Administrator access are shown.</div></aside>
+          <div class="main-panel"><div id="empty-state" class="empty-state"><div class="empty-icon">⌁</div><h2>Select a server</h2><p>Choose a server from the left to manage its Sentinel configuration.</p></div>
+            <div id="server-panel" class="hidden"><div class="server-title"><div><div class="eyebrow">SERVER CONFIGURATION</div><h2 id="guild-name">Server name</h2></div><span class="enabled-tag" id="enabled-tag">ENABLED</span></div>
+              <form id="settings-form"><div class="form-section"><div class="section-head"><h3>Core protection</h3><p>Enable or disable individual detection modules.</p></div><label class="toggle-row"><span><b>Sentinel master switch</b><small>Turn all automated defenses on or off.</small></span><input type="checkbox" name="enabled"></label><label class="toggle-row"><span><b>Anti-spam</b><small>Detect repeated messages in a short window.</small></span><input type="checkbox" name="antiSpam"></label><label class="toggle-row"><span><b>Anti-raid</b><small>Alert when joins exceed the configured threshold.</small></span><input type="checkbox" name="antiRaid"></label><label class="toggle-row"><span><b>Anti-invite links</b><small>Delete Discord invite links posted by non-exempt members.</small></span><input type="checkbox" name="antiInvite"></label><label class="toggle-row"><span><b>Mass-mention defense</b><small>Delete messages that mention too many users or roles.</small></span><input type="checkbox" name="antiMassMention"></label><label class="toggle-row"><span><b>Anti-nuke alerts</b><small>Alert on repeated channel or role deletions; does not automatically ban the actor.</small></span><input type="checkbox" name="antiNuke"></label></div>
+              <div class="form-section"><div class="section-head"><h3>Thresholds & actions</h3><p>Conservative defaults help avoid unnecessary punishment.</p></div><div class="fields"><label>Security log channel<select name="logChannelId" id="log-channel"><option value="">No log channel selected</option></select></label><label>Join burst threshold<input type="number" name="joinThreshold" min="3" max="30" required><small>Members in the join window (3–30)</small></label><label>Join window (seconds)<input type="number" name="joinWindowSeconds" min="5" max="60" required></label><label>Spam message threshold<input type="number" name="spamMessages" min="3" max="20" required><small>Messages before action (3–20)</small></label><label>Spam window (seconds)<input type="number" name="spamWindowSeconds" min="3" max="30" required></label><label>Mass-mention limit<input type="number" name="mentionLimit" min="3" max="20" required></label><label>Violation action<select name="punishment"><option value="delete">Delete message only</option><option value="timeout">Delete + 10-minute timeout</option></select></label></div></div><div class="form-actions"><span id="save-status" role="status" class="muted"></span><button type="submit" class="button primary" id="save-button">Save configuration <span>→</span></button></div></form>
+              <div class="form-section events-section"><div class="section-head"><h3>Recent security events</h3><p>Newest recorded activity for this server.</p></div><div id="events-list" class="events-list"><p class="muted">No events loaded.</p></div></div><div class="form-section"><div class="section-head"><h3>Metadata backups</h3><p>Backups capture role and channel metadata, not message history or full permission overwrites.</p></div><div id="backups-list" class="events-list"><p class="muted">No backups loaded.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div id="toast" class="toast hidden" role="status"></div>
+    </main>
+    <footer><span>© Sentinel Security · iik27.com</span><span>BUILT FOR COMMUNITIES · STAY VIGILANT</span></footer>
+  </div>
+</body></html>
